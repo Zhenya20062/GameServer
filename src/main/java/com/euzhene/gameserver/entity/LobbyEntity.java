@@ -2,6 +2,7 @@ package com.euzhene.gameserver.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "lobby")
@@ -10,6 +11,17 @@ public class LobbyEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lobby")
+    private List<UserEntity> players;
+
+    public List<UserEntity> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<UserEntity> players) {
+        this.players = players;
+    }
 
     public int getMaxPlayers() {
         return maxPlayers;
@@ -40,5 +52,5 @@ public class LobbyEntity {
         this.name = name;
     }
 
-    static final int DEFAULT_COUNT_OF_MAX_PLAYERS_IN_LOBBY = 10;
+    private static final int DEFAULT_COUNT_OF_MAX_PLAYERS_IN_LOBBY = 10;
 }

@@ -1,16 +1,26 @@
 package com.euzhene.gameserver.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class UserEntity {
+    //todo it should be PlayerEntity
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
     private String username;
+
+    @ManyToOne
+    @JoinColumn(name="lobby_id", nullable = false)
+    private LobbyEntity lobby;
+
+    public LobbyEntity getLobby() {
+        return lobby;
+    }
+
+    public void setLobby(LobbyEntity lobby) {
+        this.lobby = lobby;
+    }
 
     public String getUsername() {
         return username;
