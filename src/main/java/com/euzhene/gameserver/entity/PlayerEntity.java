@@ -3,15 +3,16 @@ package com.euzhene.gameserver.entity;
 import javax.persistence.*;
 
 @Entity
-public class UserEntity {
-    //todo it should be PlayerEntity
+@Table(name = "player")
+public class PlayerEntity {
+    // todo it should be PlayerEntity
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long playerId;
     private String username;
 
     @ManyToOne
-    @JoinColumn(name="lobby_id", nullable = false)
+    @JoinColumn(name = "lobby_id", nullable = false)
     private LobbyEntity lobby;
 
     public LobbyEntity getLobby() {
@@ -30,11 +31,11 @@ public class UserEntity {
         this.username = username;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getPlayerId() {
+        return playerId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setPlayerId(Long playerId) {
+        this.playerId = playerId;
     }
 }
