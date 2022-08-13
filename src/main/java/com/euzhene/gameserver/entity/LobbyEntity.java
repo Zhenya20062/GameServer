@@ -1,6 +1,5 @@
 package com.euzhene.gameserver.entity;
 
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,13 +12,13 @@ public class LobbyEntity {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lobby")
-    private List<UserEntity> players;
+    private List<PlayerEntity> players;
 
-    public List<UserEntity> getPlayers() {
+    public List<PlayerEntity> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<UserEntity> players) {
+    public void setPlayers(List<PlayerEntity> players) {
         this.players = players;
     }
 
