@@ -1,13 +1,13 @@
 package com.euzhene.gameserver.model;
 
 import com.euzhene.gameserver.entity.LobbyEntity;
-import com.euzhene.gameserver.entity.UserEntity;
+import com.euzhene.gameserver.entity.PlayerEntity;
 
 import java.util.List;
 
 public class Lobby {
     private String name;
-    private List<UserEntity> players;
+    private List<PlayerEntity> players;
     private int maxPlayers;
 
 
@@ -27,11 +27,11 @@ public class Lobby {
         this.name = name;
     }
 
-    public List<UserEntity> getPlayers() {
+    public List<PlayerEntity> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<UserEntity> players) {
+    public void setPlayers(List<PlayerEntity> players) {
         this.players = players;
     }
 

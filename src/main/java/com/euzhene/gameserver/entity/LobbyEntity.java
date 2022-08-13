@@ -9,6 +9,7 @@ public class LobbyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lobby")

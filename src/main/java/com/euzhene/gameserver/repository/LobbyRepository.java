@@ -4,4 +4,5 @@ import com.euzhene.gameserver.entity.LobbyEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface LobbyRepository extends CrudRepository<LobbyEntity, Long> {
+    LobbyEntity findByName(String name);
 }
