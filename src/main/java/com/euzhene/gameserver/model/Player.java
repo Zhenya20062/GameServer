@@ -1,24 +1,25 @@
 package com.euzhene.gameserver.model;
 
+import com.euzhene.gameserver.entity.LobbyEntity;
 import com.euzhene.gameserver.entity.PlayerEntity;
 
 public class Player {
-    private Long id;
     private String username;
+    private LobbyEntity lobby;
+
+    public LobbyEntity getLobby() {
+        return lobby;
+    }
+
+    public void setLobby(LobbyEntity lobby) {
+        this.lobby = lobby;
+    }
 
     public static Player toModel(PlayerEntity entity) {
         Player model = new Player();
-        model.setId(entity.getPlayerId());
         model.setUsername(entity.getUsername());
+        model.setLobby(entity.getLobby());
         return model;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {

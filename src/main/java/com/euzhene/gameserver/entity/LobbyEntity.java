@@ -1,11 +1,12 @@
 package com.euzhene.gameserver.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "lobby")
-public class LobbyEntity {
+public class LobbyEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,8 +34,7 @@ public class LobbyEntity {
 
     private int maxPlayers = DEFAULT_COUNT_OF_MAX_PLAYERS_IN_LOBBY;
 
-    public LobbyEntity() {
-    }
+    public LobbyEntity() {}
 
     public Long getId() {
         return id;

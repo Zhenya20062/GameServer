@@ -5,14 +5,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "player")
 public class PlayerEntity {
-    // todo it should be PlayerEntity
+    public PlayerEntity() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long playerId;
+    private Long id;
     private String username;
 
     @ManyToOne
-    @JoinColumn(name = "lobby_id", nullable = false)
+    @JoinColumn(name = "lobby_name", nullable = false, referencedColumnName = "name")
     private LobbyEntity lobby;
 
     public LobbyEntity getLobby() {
@@ -31,11 +32,11 @@ public class PlayerEntity {
         this.username = username;
     }
 
-    public Long getPlayerId() {
-        return playerId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPlayerId(Long playerId) {
-        this.playerId = playerId;
+    public void setId(Long id) {
+        this.id = id;
     }
 }

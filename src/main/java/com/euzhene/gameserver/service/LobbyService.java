@@ -1,6 +1,7 @@
 package com.euzhene.gameserver.service;
 
 import com.euzhene.gameserver.entity.LobbyEntity;
+import com.euzhene.gameserver.entity.PlayerEntity;
 import com.euzhene.gameserver.exception.LobbyAlreadyExistsException;
 import com.euzhene.gameserver.exception.LobbyNotFoundException;
 import com.euzhene.gameserver.model.Lobby;
@@ -38,5 +39,13 @@ public class LobbyService {
             throw new LobbyAlreadyExistsException();
         }
         return lobbyRepository.save(lobby);
+    }
+
+    public void deletePlayerFromLobby(PlayerEntity player) {
+        List<PlayerEntity> list = player.getLobby().getPlayers();
+        list.remove(player);
+        LobbyEntity updatedLobby = player.getLobby();
+        updatedLobby.setPlayers(list);
+        lobbyRepository.save(updatedLobby);
     }
 }
